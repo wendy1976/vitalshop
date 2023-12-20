@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+ <div style="background-color: #ffc0cb" class="container">
+ <h1 class="text-primary">Formulaire d'inscription</h1>
+  {# Affichez les conditions du mot de passe #}
+  <div class="alert alert-info">
+        <p>Votre mot de passe doit remplir les conditions suivantes :</p>
+        <ul>
+            <li>Au moins 8 caractères</li>
+            <li>Au moins une majuscule</li>
+            <li>Au moins un chiffre</li>
+            <li>Au moins un caractère spécial (par exemple, !, @, #, $, %, etc.)</li>
+        </ul>
+    </div>
+ {# Pour afficher le formulaire #}
+ {{ form_start(utilisateurform) }}
+    <div class="form-group">
+            {{ form_label(utilisateurform.nom, 'Nom', {'label_attr': {'class': 'fw-bold'}}) }}
+            {{ form_widget(utilisateurform.nom, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+            {{ form_label(utilisateurform.prenom, 'Prénom', {'label_attr': {'class': 'fw-bold'}}) }}
+            {{ form_widget(utilisateurform.prenom, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(utilisateurform.email, 'Email', {'label_attr': {'class': 'fw-bold'}}) }}
+        {{ form_widget(utilisateurform.email, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    {# Champ de confirmation d'email #}
+    <div class="form-group">
+        {{ form_label(utilisateurform.emailConfirmation, 'Confirmez votre email', {'label_attr': {'class': 'fw-bold'}}) }}
+        {{ form_widget(utilisateurform.emailConfirmation, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    
+    <div class="form-group">
+            {{ form_label(utilisateurform.password, 'Mot de passe', {'label_attr': {'class': 'fw-bold'}}) }}
+            {{ form_widget(utilisateurform.password, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(utilisateurform.password) }}
+    </div>       
+   
+       
+        {{ form_end(utilisateurform) }}
+    </div>
+{% endblock %}

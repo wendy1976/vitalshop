@@ -1,0 +1,24 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+
+    App\Controller\Api\ProfilController:
+        public: true
+
+    
+    App\Controller\ChiffreAffaireController:
+        autowire: true
+        autoconfigure: true    
+
+#Ajout de l'entrée d'une tache CRON pour l'envoi du mail le 5 du mois à l'utilisateur, si le CA du mois précédent n'est pas rempli
+    #App\Command\EmailReminderCommand:
+        #tags:
+            #- { name: 'cron.job', command: 'app:email-reminder', schedule: '0 0 5 * *' }    

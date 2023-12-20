@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <style>
+        /* Ajoutez du style personnalisé ici si nécessaire */
+        body {
+            background-color: blue;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+        .content {
+            text-align: center;
+            padding: 100px;
+        }
+        img {
+            max-width: 100%;
+        }
+        h1 {
+            margin-bottom: 100px;
+            color: yellow;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .yellow-links li a {
+            color: yellow;
+        }
+        /* Style pour positionner le logo en haut à gauche */
+        .logo-container {
+            position: relative;
+            max-width: 100%;
+            margin: 0 auto; /* Centrer le contenu */
+        }
+        .logo {
+            max-width: 100px; /* Ajustez la largeur maximale selon vos besoins */
+            margin-right: 20px; /* Ajoute une marge entre le logo et le titre */
+            margin-bottom: 30px;
+            margin-top: -40px;
+        }
+        .logo-title {
+            display: inline-block; /* Permet au titre d'apparaître à côté du logo */
+            color: yellow;
+        }
+    </style>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+{% endblock %}
+
+{% block title %}Accueil de VITALSHOP!{% endblock %}
+
+{% block body %}
+    <div class="content">
+        <div class="logo-container">
+            <img src="{{ asset('assets/images/logo.jpg') }}" alt="Logo VITALSHOP" class="logo">
+            <h2 class="logo-title">VITALSHOP</h2>
+        </div>
+        <h1 class="h4"  style="margin-bottom: 20px;">Bienvenue sur les interfaces de gestion des produits VITALSHOP</h1>
+        <img src="{{ asset('assets/images/vitalshop.jpg') }}" alt="Rayons vitalshop" style="width: 300px; margin-bottom: 20px;">
+        <ul class="yellow-links">
+            <li><a href="#">Lien vers le service d'administration</a></li>
+            <li><a href="#">Lien vers l'espace personnel de la direction</a></li>
+            <li><a href="#">Lien vers le formulaire d'inscription</a></li>
+            <!-- Ajoutez d'autres liens vers vos pages ici -->
+        </ul>
+    </div>
+{% endblock %}

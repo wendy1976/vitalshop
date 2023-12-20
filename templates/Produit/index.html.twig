@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+{% endblock %}
+
+{% block title %}Liste des produits{% endblock %}
+
+{% block body %}
+<h1>Liste des Produits</h1>
+
+{% if produits is not empty %}
+    {% for produit in produits %}
+        <div class="produit">
+            <img src="{{ produit.imageProduit }}" alt="{{ produit.descriptionProduit }}">
+            <h2>{{ produit.nomProduit }}</h2>
+            <p>{{ produit.descriptionProduit }}</p>
+            <p><strong>Mots-clés :</strong> {{ produit.motsCles }}</p>
+            <p><strong>Nutriscore :</strong> {{ produit.noteNutriscore }}</p>
+            <p><strong>Énergie :</strong> {{ produit.energie }} Kcal pour 100g</p>
+            <p><strong>Date de mise à jour :</strong> {{ produit.dateDerniereMaj|date('Y-m-d H:i:s') }}</p>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>Aucun produit à afficher.</p>
+{% endif %}
+{% endblock %}

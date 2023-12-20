@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UtilisateurListController!{% endblock %}
+
+{% block body %}
+{# Pour afficher la liste des contrats sous forme de tableau #}
+    <h1 class= text-primary>Liste des utilisateurs</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Password</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for utilisateur in utilisateurs %}
+                <tr>
+                    <td>{{ utilisateur.getId }}</td>
+                    <td>{{ utilisateur.getNom }}</td>
+                    <td>{{ utilisateur.getPrenom }}</td>
+                    <td>{{ utilisateur.getEmail }}</td>
+                    <td>{{ utilisateur.getPassword }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

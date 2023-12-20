@@ -1,0 +1,4 @@
+#envoi fictif des mails aux utilisateurs qui ont des mails fictifs
+framework:
+    mailer:
+        dsn: 'null://localhost' # Utilisation du transport null
