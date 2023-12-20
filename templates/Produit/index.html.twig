@@ -4,6 +4,7 @@
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     
+    
 {% endblock %}
 
 {% block javascripts %}
@@ -14,21 +15,28 @@
 {% block title %}Fiches des produits{% endblock %}
 
 {% block body %}
-<h1>Fiches des Produits</h1>
+<h1 class="text-primary">Fiches des Produits</h1>
 
-{% if produits is not empty %}
-    {% for produit in produits %}
-        <div class="produit">
-            <img src="{{ produit.imageProduit }}" alt="{{ produit.descriptionProduit }}">
-            <h2>{{ produit.nomProduit }}</h2>
-            <p>{{ produit.descriptionProduit }}</p>
-            <p><strong>Mots-clés :</strong> {{ produit.motsCles }}</p>
-            <p><strong>Nutriscore :</strong> {{ produit.noteNutriscore }}</p>
-            <p><strong>Énergie :</strong> {{ produit.energie }} Kcal pour 100g</p>
-            <p><strong>Date de mise à jour :</strong> {{ produit.dateDerniereMaj|date('Y-m-d H:i:s') }}</p>
+    {% if produits is not empty %}
+        <div class="d-flex flex-wrap">
+            {% for produit in produits %}
+                <div class="col-md-4 mb-4 d-flex">
+                    <div class="card flex-fill">
+                        <img src="{{ produit.imageProduit }}" class="card-img-top img-thumbnail" alt="{{ produit.descriptionProduit }}" style="width: 200px; height: 200px;">
+                        <div class="card-body">
+                            <p class="card-text"><strong>Référence :</strong> {{ produit.referenceProduit }}</p>
+                            <h5 class="card-title text-primary">{{ produit.nomProduit }}</h5>
+                            <p class="card-text">{{ produit.descriptionProduit }}</p>
+                            <p class="card-text"><strong>Mots-clés :</strong> {{ produit.motsCles }}</p>
+                            <p class="card-text"><strong>Nutriscore :</strong> {{ produit.noteNutriscore }}</p>
+                            <p class="card-text"><strong>Énergie :</strong> {{ produit.energie }} Kcal pour 100g</p>
+                            <p class="card-text"><strong>Date de mise à jour :</strong> {{ produit.dateDerniereMaj|date('Y-m-d H:i:s') }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
-{% else %}
-    <p>Aucun produit à afficher.</p>
-{% endif %}
+    {% else %}
+        <p>Aucun produit à afficher.</p>
+    {% endif %}
 {% endblock %}
